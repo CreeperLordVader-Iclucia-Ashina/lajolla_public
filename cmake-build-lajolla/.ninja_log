@@ -1,0 +1,12 @@
+# ninja log v5
+1	2069	1663414140960277934	CMakeFiles/lajolla_lib.dir/src/light.cpp.o	d202a2bacf365dc8
+0	2749	1663414141640268121	CMakeFiles/lajolla_lib.dir/src/3rdparty/miniz.c.o	8208f9b77e46e39d
+1	957	1663414139843627649	CMakeFiles/lajolla_lib.dir/src/filter.cpp.o	b773bbfc55a3c5e0
+2	1387	1663414140276954604	CMakeFiles/lajolla_lib.dir/src/medium.cpp.o	8ec2e9f93c6a8dbd
+1	1636	1663414140526950944	CMakeFiles/lajolla_lib.dir/src/load_serialized.cpp.o	8c1696d8bba2b6b1
+1	1732	1663414140623616196	CMakeFiles/lajolla_lib.dir/src/intersection.cpp.o	bfdf9b5ac71a4a27
+0	5425	1663414144313563777	CMakeFiles/lajolla_lib.dir/src/3rdparty/pugixml.cpp.o	5314df42c2569a75
+1	1138	1663414140030291548	CMakeFiles/lajolla_lib.dir/src/camera.cpp.o	df89e94c791fe8be
+2	1605	1663414140496951384	CMakeFiles/lajolla_lib.dir/src/parallel.cpp.o	e85e4f684c46728b
+1	8888	1663414147770184032	CMakeFiles/lajolla_lib.dir/src/image.cpp.o	b1518094f1bc3a8b
+3	6032	1663414144916888808	CMakeFiles/lajolla_lib.dir/src/parse_obj.cpp.o	fcbdf78cf1275605

@@ -60,7 +60,7 @@ std::optional<BSDFSampleRecord> sample_bsdf_op::operator()(const DisneyDiffuse &
     // Homework 1: implement this!
     return BSDFSampleRecord{
             to_world(frame, sample_cos_hemisphere(rnd_param_uv)),
-            Real(0) /* eta */,  eval(bsdf.roughness, vertex.uv, vertex.uv_screen_size, texture_pool)/* roughness */};
+            eta /* eta */,  eval(bsdf.roughness, vertex.uv, vertex.uv_screen_size, texture_pool)/* roughness */};
 }
 
 TextureSpectrum get_texture_op::operator()(const DisneyDiffuse &bsdf) const {
