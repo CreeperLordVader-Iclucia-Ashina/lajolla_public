@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "render.h"
 #include "intersection.h"
 #include "material.h"
@@ -122,7 +123,6 @@ Image3 vol_path_render(const Scene &scene) {
     } else if (scene.options.vol_path_version == 6) {
         f = vol_path_tracing;
     }
-
     ProgressReporter reporter(num_tiles_x * num_tiles_y);
     parallel_for([&](const Vector2i &tile) {
         // Use a different rng stream for each thread.

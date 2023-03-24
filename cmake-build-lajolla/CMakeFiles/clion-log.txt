@@ -1,4 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion/bin/ninja/linux/ninja -G Ninja -S /home/creeper/lajolla_public -B /home/creeper/lajolla_public/cmake-build-lajolla
--- Configuring done
--- Generating done
--- Build files have been written to: /home/creeper/lajolla_public/cmake-build-lajolla
