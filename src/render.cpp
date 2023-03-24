@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "render.h"
 #include "intersection.h"
 #include "material.h"
