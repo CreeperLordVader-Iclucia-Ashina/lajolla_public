@@ -20,6 +20,17 @@ struct sample_point_on_light_op {
     const Scene &scene;
 };
 
+struct sample_point_on_light_surface_op {
+    PointAndNormal operator()(const DiffuseAreaLight &light) const;
+    PointAndNormal operator()(const Envmap &light) const;
+
+    const Vector2 &rnd_param_uv;
+    const Real &rnd_param_w;
+    const Scene &scene;
+};
+
+
+
 struct pdf_point_on_light_op {
     Real operator()(const DiffuseAreaLight &light) const;
     Real operator()(const Envmap &light) const;
@@ -59,6 +70,13 @@ PointAndNormal sample_point_on_light(const Light &light,
                                      Real rnd_param_w,
                                      const Scene &scene) {
     return std::visit(sample_point_on_light_op{ref_point, rnd_param_uv, rnd_param_w, scene}, light);
+}
+
+PointAndNormal sample_point_on_light_surface(const Light &light,
+                                     const Vector2 &rnd_param_uv,
+                                     Real rnd_param_w,
+                                     const Scene &scene) {
+    return std::visit(sample_point_on_light_surface_op{rnd_param_uv, rnd_param_w, scene}, light);
 }
 
 Real pdf_point_on_light(const Light &light,
