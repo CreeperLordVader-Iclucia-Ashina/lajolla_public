@@ -94,7 +94,7 @@ set(SRCS src/3rdparty/miniz.h
          src/shape.cpp
          src/table_dist.cpp
          src/transform.cpp
-         src/volume.cpp)
+         src/volume.cpp src/bidirectional_path_tracing.h src/Subpath.h)
 
 
 

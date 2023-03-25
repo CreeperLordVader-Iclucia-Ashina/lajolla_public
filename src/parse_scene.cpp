@@ -289,6 +289,25 @@ RenderOptions parse_integrator(pugi::xml_node node) {
                 options.max_null_collisions = std::stoi(child.attribute("value").value());
             }
         }
+    } else if(type == "bdpt") {
+        options.integrator = Integrator::BidirectionalPath;
+        for (auto child : node.children()) {
+            std::string name = child.attribute("name").value();
+            if(name == "maxDepth") {
+                options.max_depth = std::stoi(child.attribute("value").value());
+            }
+            if(name == "lightImage") {
+                // TODO: look up the format and add this option
+                options.light_image = true;
+            }
+            if(name == "sampleDirect") {
+                // TODO: look up the format and add this option
+                options.sample_direct = true;
+            }
+            if(name == "rrDepth") {
+                options.rr_depth = std::stoi(child.attribute("value").value());
+            }
+        }
     } else if (type == "direct") {
         options.integrator = Integrator::Path;
         options.max_depth = 2;

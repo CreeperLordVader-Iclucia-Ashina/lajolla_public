@@ -193,7 +193,9 @@
 				54,
 				55,
 				56,
-				57
+				57,
+				76,
+				77
 			]
 		},
 		{
@@ -624,6 +626,16 @@
 			"compileGroupIndex" : 1,
 			"path" : "src/volume.cpp",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/bidirectional_path_tracing.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Subpath.h",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "STATIC_LIBRARY"

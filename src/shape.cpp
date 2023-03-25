@@ -21,6 +21,14 @@ struct sample_point_on_shape_op {
     const Real &w; // for selecting triangles
 };
 
+struct sample_point_on_shape_surface_op {
+    PointAndNormal operator()(const Sphere &sphere) const;
+    PointAndNormal operator()(const TriangleMesh &mesh) const;
+
+    const Vector2 &uv; // for selecting a point on a 2D surface
+    const Real &w; // for selecting triangles
+};
+
 struct surface_area_op {
     Real operator()(const Sphere &sphere) const;
     Real operator()(const TriangleMesh &mesh) const;
@@ -58,6 +66,12 @@ PointAndNormal sample_point_on_shape(const Shape &shape,
                                      const Vector2 &uv,
                                      Real w) {
     return std::visit(sample_point_on_shape_op{ref_point, uv, w}, shape);
+}
+
+PointAndNormal sample_point_on_shape_surface(const Shape &shape,
+                                             const Vector2 &uv,
+                                             Real w) {
+    return std::visit(sample_point_on_shape_surface_op{uv, w}, shape);
 }
 
 Real pdf_point_on_shape(const Shape &shape,

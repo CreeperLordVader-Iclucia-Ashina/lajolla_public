@@ -37,6 +37,22 @@ PointAndNormal sample_point_on_shape_op::operator()(const TriangleMesh &mesh) co
     return PointAndNormal{v0 + (e1 * b1) + (e2 * b2), normalize(cross(e1, e2))};
 }
 
+PointAndNormal sample_point_on_shape_surface_op::operator()(const TriangleMesh &mesh) const
+{
+    int tri_id = sample(mesh.triangle_sampler, w);
+    assert(tri_id >= 0 && tri_id < (int)mesh.indices.size());
+    Vector3i index = mesh.indices[tri_id];
+    Vector3 v0 = mesh.positions[index[0]];
+    Vector3 v1 = mesh.positions[index[1]];
+    Vector3 v2 = mesh.positions[index[2]];
+    Vector3 e1 = v1 - v0;
+    Vector3 e2 = v2 - v0;
+    Real a = sqrt(std::clamp(uv[0], Real(0), Real(1)));
+    Real b1 = 1 - a;
+    Real b2 = a * uv[1];
+    return PointAndNormal{v0 + (e1 * b1) + (e2 * b2), normalize(cross(e1, e2))};
+}
+
 Real surface_area_op::operator()(const TriangleMesh &mesh) const {
     return mesh.total_area;
 }

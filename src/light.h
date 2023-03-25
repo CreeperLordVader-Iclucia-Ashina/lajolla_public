@@ -49,12 +49,29 @@ PointAndNormal sample_point_on_light(const Light &light,
                                      Real rnd_param_w,
                                      const Scene &scene);
 
+/// Given some random numbers, sample a point on the light source.
+/// If the point is on a surface, returns both the point & normal on it.
+/// If the point is infinitely far away (e.g., on an environment map),
+/// we store the direction that points towards the origin in PointAndNormal.normal.
+/// rnd_param_w is usually used for choosing a discrete element e.g., choosing a triangle in a mesh light.
+/// rnd_param_uv is usually used for picking a point on that element.
+PointAndNormal sample_point_on_light_surface(const Light &light,
+                                             const Vector2 &rnd_param_uv,
+                                             Real rnd_param_w,
+                                             const Scene &scene);
+
 /// Given a point on the light source and a reference point,
 /// compute the sampling density for the function above.
 Real pdf_point_on_light(const Light &light,
                         const PointAndNormal &point_on_light,
                         const Vector3 &ref_point,
                         const Scene &scene);
+
+/// Given a point on the light source and a reference point,
+/// compute the sampling density for the function above.
+Real pdf_point_on_light_surface(const Light &light,
+                                const PointAndNormal &point_on_light,
+                                const Scene &scene);
 
 /// Given a viewing direction pointing outwards from the light, and a point on the light,
 /// compute the emission of the light. We also need the "footprint" of the ray

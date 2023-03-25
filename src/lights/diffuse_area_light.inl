@@ -7,6 +7,17 @@ PointAndNormal sample_point_on_light_op::operator()(const DiffuseAreaLight &ligh
     return sample_point_on_shape(shape, ref_point, rnd_param_uv, rnd_param_w);
 }
 
+PointAndNormal sample_point_on_light_surface_op::operator()(const DiffuseAreaLight &light) const
+{
+    const Shape &shape = scene.shapes[light.shape_id];
+    return sample_point_on_shape_surface(shape, rnd_param_uv, rnd_param_w);
+}
+
+PointAndNormal sample_point_on_light_surface_op::operator()(const Envmap &light) const
+{
+    
+}
+
 Real pdf_point_on_light_op::operator()(const DiffuseAreaLight &light) const {
     return pdf_point_on_shape(
         scene.shapes[light.shape_id], point_on_light, ref_point);

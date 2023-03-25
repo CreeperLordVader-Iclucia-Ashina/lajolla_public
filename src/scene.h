@@ -18,7 +18,8 @@ enum class Integrator {
     RayDifferential, // visualize radius & spread
     MipmapLevel,
     Path,
-    VolPath
+    VolPath,
+    BidirectionalPath,
 };
 
 struct RenderOptions {
@@ -28,6 +29,8 @@ struct RenderOptions {
     int rr_depth = 5;
     int vol_path_version = 0;
     int max_null_collisions = 1000;
+    bool light_image = true;
+    bool sample_direct = true;
 };
 
 /// Bounding sphere

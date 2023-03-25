@@ -203,6 +203,19 @@ PointAndNormal sample_point_on_shape_op::operator()(const Sphere &sphere) const 
     return PointAndNormal{p_on_sphere, n_on_sphere};
 }
 
+PointAndNormal sample_point_on_shape_surface_op::operator()(const Sphere &sphere) const
+{
+    const Vector3 &center = sphere.position;
+    const Real &r = sphere.radius;
+    Real z = 1 - 2 * uv.x;
+    Real r_ = sqrt(fmax(Real(0), 1 - z * z));
+    Real phi = 2 * c_PI * uv.y;
+    Vector3 offset(r_ * cos(phi), r_ * sin(phi), z);
+    Vector3 position = center + r * offset;
+    Vector3 normal = offset;
+    return PointAndNormal{position, normal};
+}
+
 Real surface_area_op::operator()(const Sphere &sphere) const {
     return 4 * c_PI * sphere.radius * sphere.radius;
 }
