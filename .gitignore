@@ -34,7 +34,7 @@
 # CMake
 build/
 .idea
-cmake-build-lajolla
+cmake-build-lajolla/
 # Embree binaries
 !embree/bin/*
 !embree/lib-linux/*
